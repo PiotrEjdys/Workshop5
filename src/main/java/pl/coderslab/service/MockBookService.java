@@ -10,6 +10,7 @@ import org.springframework.web.context.WebApplicationContext;
 import pl.coderslab.model.Book;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 @ToString
@@ -19,9 +20,6 @@ import java.util.List;
 public class MockBookService implements BookService{
     private List<Book> list;
     private static Long nextId = 4L;
-    private BookService bookService;
-
-
 
     public MockBookService() {
         list = new ArrayList<>();
@@ -42,15 +40,20 @@ public class MockBookService implements BookService{
         this.list.add(item);
         nextId++;
     }
+//    @Override
+//    public Book showBook(long index){
+//        for (Book el:list) {
+//            if (el.getId() ==index){
+//                return el;
+//            }
+//        }
+//        return null;
+//    }
     @Override
-    public Book showBook(long index){
-        for (Book el:list) {
-            if (el.getId() ==index){
-                return el;
-            }
-        }
-        return null;
+    public Optional<Book> showBook(long id) {
+        return list.stream().filter(item -> item.getId().equals(id)).findFirst();
     }
+
     @Override
     public void deleteBook(long index){
         for (Book el:list) {

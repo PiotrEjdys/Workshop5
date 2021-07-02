@@ -1,10 +1,11 @@
 package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import pl.coderslab.model.Book;
 import pl.coderslab.service.BookService;
-import pl.coderslab.service.MockBookService;
 import java.util.List;
 
 @RestController
@@ -32,10 +33,19 @@ public class BookController {
     this.bookService.addBook(book);
 
     }
-    @GetMapping("/{id}")
-    public Book showBook(@PathVariable long id){
-        return this.bookService.showBook(id);
-    }
+//    @GetMapping("/{id}")
+//    public Book showBook(@PathVariable long id){
+//        return this.bookService.showBook(id);
+//    }
+@GetMapping("/{id}")
+public Book showBook(@PathVariable long id) {
+    return this.bookService.showBook(id).orElseThrow(() -> {
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "entity not found"
+        );
+    });
+}
+
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable long id){
     this.bookService.deleteBook(id);
