@@ -1,22 +1,21 @@
 package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.model.Book;
+import pl.coderslab.service.BookService;
 import pl.coderslab.service.MockBookService;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    private final MockBookService mockBookService;
+    private BookService bookService;
 @Autowired
-    public BookController(MockBookService mockBookService) {
-        this.mockBookService = mockBookService;
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
+
 
     @RequestMapping("/helloBook")
     public Book helloBook() {
@@ -25,25 +24,25 @@ public class BookController {
     }
     @RequestMapping
     public List<Book> listOfBooks(){
-        return this.mockBookService.showBooks();
+        return this.bookService.showBooks();
     }
 
     @PostMapping
     public void addBook(@RequestBody Book book){
-    this.mockBookService.addBook(book);
+    this.bookService.addBook(book);
 
     }
     @GetMapping("/{id}")
     public Book showBook(@PathVariable long id){
-        return this.mockBookService.showBook(id);
+        return this.bookService.showBook(id);
     }
     @DeleteMapping("/{id}")
     public void deleteBook(@PathVariable long id){
-    this.mockBookService.deleteBook(id);
+    this.bookService.deleteBook(id);
     }
     @PutMapping
     public void updateBook(@RequestBody Book book){
-    this.mockBookService.updateBook(book);
+    this.bookService.updateBook(book);
 
     }
 
