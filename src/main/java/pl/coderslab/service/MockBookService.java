@@ -16,7 +16,7 @@ import java.util.Optional;
 @ToString
 @Component
 @EqualsAndHashCode
-@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class MockBookService implements BookService{
     private List<Book> list;
     private static Long nextId = 4L;

@@ -10,15 +10,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ComponentScan("pl.coderslab")
 @EnableWebMvc
 public class AppConfig implements WebMvcConfigurer {
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp("/",".jsp");
-    }
-
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
+//    @Override
+//    public void configureViewResolvers(ViewResolverRegistry registry) {
+//        registry.jsp("/",".jsp");
+//    }
+//
+//    @Override
+//    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+//        configurer.enable();
+//    }
 
 }
 
