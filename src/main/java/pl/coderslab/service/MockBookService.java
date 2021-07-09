@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Getter
 @ToString
-@Component
+//@Component
 @EqualsAndHashCode
 //@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class MockBookService implements BookService{
@@ -30,7 +30,7 @@ public class MockBookService implements BookService{
                 "programming"));
     }
     @Override
-    public List<Book> showBooks(){
+    public List<Book> getBooks(){
 
         return this.list;
     }
@@ -50,7 +50,7 @@ public class MockBookService implements BookService{
 //        return null;
 //    }
     @Override
-    public Optional<Book> showBook(long id) {
+    public Optional<Book> get(long id) {
         return list.stream().filter(item -> item.getId().equals(id)).findFirst();
     }
 
@@ -73,7 +73,10 @@ public class MockBookService implements BookService{
         }
     }
 
-
+    @Override
+    public Book findBookById(long id) {
+        return null;
+    }
 
 
 }

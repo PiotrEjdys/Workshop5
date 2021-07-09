@@ -2,6 +2,8 @@ package pl.coderslab.model;
 
 import lombok.*;
 
+import javax.persistence.*;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -9,7 +11,11 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String isbn;
     private String title;

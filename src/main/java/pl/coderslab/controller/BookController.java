@@ -8,11 +8,11 @@ import pl.coderslab.model.Book;
 import pl.coderslab.service.BookService;
 import java.util.List;
 
-@RestController
-@RequestMapping("/books")
+//@RestController
+//@RequestMapping("/books")
 public class BookController {
     private BookService bookService;
-@Autowired
+//@Autowired
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
@@ -25,7 +25,7 @@ public class BookController {
     }
     @RequestMapping
     public List<Book> listOfBooks(){
-        return this.bookService.showBooks();
+        return this.bookService.getBooks();
     }
 
     @PostMapping
@@ -39,7 +39,7 @@ public class BookController {
 //    }
 @GetMapping("/{id}")
 public Book showBook(@PathVariable long id) {
-    return this.bookService.showBook(id).orElseThrow(() -> {
+    return this.bookService.get(id).orElseThrow(() -> {
         throw new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "entity not found"
         );
