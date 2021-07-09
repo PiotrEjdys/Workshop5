@@ -18,6 +18,9 @@
     <th>isbn</th>
     <th>title</th>
     <th>author</th>
+    <th>usuń</th>
+    <th>szczegóły</th>
+    <th>edycja</th>
     </thead>
     <tbody>
     <c:forEach items="${books}" var="book">
@@ -25,7 +28,9 @@
             <td><c:out value="${book.isbn}"/></td>
             <td><c:out value="${book.title}"/></td>
             <td><c:out value="${book.author}"/></td>
-            <td><a href="/admin/books/delete/${book.id}">Delete</a> <a href="/admin/books/${book.id}">Szczegóły</a> <a href="/admin/books/edit/${book.id}">Edycja</a></td>
+            <td><a href="/admin/books/delete/${book.id}">Delete</a> </td>
+            <td><a href="/admin/books/${book.id}">Szczegóły</a> </td>
+            <td><a href="/admin/books/edit/${book.id}">Edycja</a></td>
         </tr>
     </c:forEach>
     </tbody>
